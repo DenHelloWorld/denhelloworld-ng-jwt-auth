@@ -1,1 +1,22 @@
-<p>register works!</p>
+<div class="d-flex justify-content-center">
+  <div class="card" style="width: 26rem">
+    <div class="card-body">
+      <h5 class="card-title mb-3">Register</h5>
+      <form (submit)="submit()" [formGroup]="form" action="">
+        <div class="mb-3">
+          <label class="form-label" for="name">Your Name</label>
+          <input formControlName="name" class="form-control" type="text" placeholder="Name" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="email">Email Address</label>
+          <input formControlName="email" class="form-control" type="email" placeholder="Email Address" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="password">Password</label>
+          <input formControlName="password" class="form-control" type="password" placeholder="Password" />
+        </div>
+        <button [disabled]="form.invalid" type="submit" class="btn btn-success">Register</button>
+      </form>
+    </div>
+  </div>
+</div>
