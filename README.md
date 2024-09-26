@@ -16,7 +16,7 @@ The backend is built using [Express](https://expressjs.com), located in the `api
 ## Environment Variables
 
 The following environment variables should be defined in a `.env` file at the root of the api directory:
-- ```bash
+```bash
 PORT=4402
 PRODUCTION=false
 ```
