@@ -4,6 +4,7 @@ import UserSchema from './UserSchema';
 import bcrypt from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 import config from '../config/config';
+import { AuthRequest } from '../middlewares/authenticate';
 
 export const register = async (req: Request, res: Response, next: NextFunction) => {
   const { name, email, password } = req.body;
@@ -70,5 +71,16 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 };
 
 export const me = async (req: Request, res: Response, next: NextFunction) => {
-  res.json({ message: 'me func' });
+  try {
+    const _request = req as AuthRequest;
+    const user = await UserSchema.findById(_request.userId);
+    if (user) {
+      return res.status(200).json({
+        status: true,
+        data: { _id: user._id, email: user.email, name: user.name },
+      });
+    }
+  } catch (error) {
+    return res.status(500).json({ error: 'Something went wrong.' });
+  }
 };
