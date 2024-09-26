@@ -10,9 +10,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Backend
+The backend is built using [Express](https://expressjs.com), located in the `api` directory as the base framework.
 
 ## Environment Variables
 
