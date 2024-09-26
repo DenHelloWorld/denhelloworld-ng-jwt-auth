@@ -16,9 +16,10 @@ The backend is built using [Express](https://expressjs.com), located in the `api
 ## Environment Variables
 
 The following environment variables should be defined in a `.env` file at the root of the api directory:
-
-- **PORT**: The port number on which the server will run (e.g., `4402`).
-- **PRODUCTION**: A flag indicating whether the app is running in production mode (e.g., `false`).
+- ```bash
+PORT=4402
+PRODUCTION=false
+```
 
 ## MongoDB Compass
 
