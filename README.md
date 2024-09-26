@@ -1,6 +1,9 @@
 # DenhelloworldNgJwtAuth
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
+- Is a full-stack web application built with Angular 18 for the frontend and Express.js for the backend.
+- It provides user authentication using JSON Web Tokens (JWT) for secure login and session management.
+- The backend handles user registration, login, and token-based authentication, while the frontend allows users to access protected routes after logging in.
+- MongoDB is used to store user information, and the application leverages modern security practices to ensure safe and efficient user management.
 
 ## Development server
 
