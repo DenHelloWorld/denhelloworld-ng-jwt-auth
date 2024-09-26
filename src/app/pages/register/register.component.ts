@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../core/sevices/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +12,8 @@ import { FormGroup, FormBuilder, FormControl, Validators, ReactiveFormsModule } 
 })
 export class RegisterComponent {
   form: FormGroup;
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -19,7 +23,13 @@ export class RegisterComponent {
     });
   }
 
-  submit() {
-    console.log(this.form.value);
+  onSubmit() {
+    if (this.form.valid) {
+      this.authService.register(this.form.value).subscribe({
+        next: () => {
+          this.router.navigate(['login']);
+        },
+      });
+    }
   }
 }

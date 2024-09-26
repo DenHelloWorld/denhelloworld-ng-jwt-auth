@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { ApiResponse, LoginPayload, RegisterPayload, User } from '../model/common.model';
 import { apiEndpoint, LocalStorage } from '../constants/contstants';
 import { map } from 'rxjs';
@@ -9,8 +9,15 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
+  isLoggedIn = signal<boolean>(false);
   private _http = inject(HttpClient);
   private router = inject(Router);
+
+  constructor() {
+    if (this.getUserToken()) {
+      this.isLoggedIn.update(() => true);
+    }
+  }
 
   register(payload: RegisterPayload) {
     return this._http.post<ApiResponse<User>>(`${apiEndpoint.Auth.Register}`, payload);
@@ -21,6 +28,7 @@ export class AuthService {
       map(response => {
         if (response.status && response.token) {
           localStorage.setItem(LocalStorage.token, response.token);
+          this.isLoggedIn.update(() => true);
         }
         return response;
       }),
@@ -31,8 +39,13 @@ export class AuthService {
     return this._http.get<ApiResponse<User>>(`${apiEndpoint.Auth.Me}`);
   }
 
+  getUserToken() {
+    return localStorage.getItem(LocalStorage.token);
+  }
+
   logout() {
     localStorage.removeItem(LocalStorage.token);
+    this.isLoggedIn.update(() => false);
     this.router.navigate(['login']);
   }
 }
