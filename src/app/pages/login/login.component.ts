@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../core/sevices/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { FormGroup, FormBuilder, FormControl, Validators, ReactiveFormsModule } 
 })
 export class LoginComponent {
   form: FormGroup;
+  private authService = inject(AuthService);
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -18,7 +20,13 @@ export class LoginComponent {
     });
   }
 
-  submit() {
-    console.log(this.form.value);
+  onSubmit() {
+    if (this.form.valid) {
+      this.authService.login(this.form.value).subscribe({
+        next: response => {
+          console.log(response);
+        },
+      });
+    }
   }
 }

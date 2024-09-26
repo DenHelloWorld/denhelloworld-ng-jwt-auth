@@ -17,5 +17,6 @@ export interface ApiResponse<T> {
   stetus?: boolean;
   message?: string;
   error?: string;
+  token?: string;
   data: T;
 }
