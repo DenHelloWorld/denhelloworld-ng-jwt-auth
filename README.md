@@ -18,8 +18,6 @@ The backend is built using [Express](https://expressjs.com), located in the `api
 The following environment variables should be defined in a `.env` file at the root of the api directory:
 
 - **PORT**: The port number on which the server will run (e.g., `4402`).
-- **MONGO_URL**: The MongoDB connection string (e.g., `mongodb://localhost:27017/ng-17-jwt-auth`).
-- **JWT_SECRET**: A secret key used to sign JWT tokens (e.g., `fwrt43v63458m6356t8957438vn573480`).
 - **PRODUCTION**: A flag indicating whether the app is running in production mode (e.g., `false`).
 
 ## MongoDB Compass
@@ -31,10 +29,8 @@ For convenient management and visualization of MongoDB data, you can use [MongoD
 To connect to the database using MongoDB Compass, use the connection string from your `.env` file, for example:
 
 ```bash
-PORT=4402
 MONGO_URL=mongodb://localhost:27017/ng-17-jwt-auth
 JWT_SECRET=fwrt43v63458m6356t8957438vn573480
-PRODUCTION=false
 ```
 
 ## Running unit tests
