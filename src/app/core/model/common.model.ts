@@ -14,7 +14,7 @@ export interface RegisterPayload extends LoginPayload {
 }
 
 export interface ApiResponse<T> {
-  stetus?: boolean;
+  status?: boolean;
   message?: string;
   error?: string;
   token?: string;
