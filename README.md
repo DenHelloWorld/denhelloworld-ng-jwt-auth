@@ -25,9 +25,9 @@ PRODUCTION=false
 
 For convenient management and visualization of MongoDB data, you can use [MongoDB Compass](https://www.mongodb.com/products/compass). This graphical interface allows you to monitor collections, documents, and perform database queries easily.
 
-### Connecting to the Database
+### Connecting to the MongoDB
 
-To connect to the database using MongoDB Compass, use the connection string from your `.env` file, for example:
+To connect to the database, use the connection string from your `.env` file, for example:
 
 ```bash
 MONGO_URL=mongodb://localhost:27017/ng-17-jwt-auth
