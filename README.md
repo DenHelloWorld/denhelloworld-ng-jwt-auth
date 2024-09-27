@@ -3,7 +3,7 @@
 - Is a full-stack web application built with Angular 18 for the frontend and Express.js for the backend.
 - It provides user authentication using JSON Web Tokens (JWT) for secure login and session management.
 - The backend handles user registration, login, and token-based authentication, while the frontend allows users to access protected routes after logging in.
-- MongoDB is used to store user information, and the application leverages modern security practices to ensure safe and efficient user management.
+- MongoDB is used to store user information.
 
 ## Development server
 
@@ -24,6 +24,10 @@ PORT=4402
 PRODUCTION=false
 ```
 
+## Install MongoDB
+
+[MongoDB](https://www.mongodb.com/try/download/community)
+
 ## MongoDB Compass
 
 For convenient management and visualization of MongoDB data, you can use [MongoDB Compass](https://www.mongodb.com/products/compass). This graphical interface allows you to monitor collections, documents, and perform database queries easily.
@@ -36,6 +40,12 @@ To connect to the database, use the connection string from your `.env` file, for
 MONGO_URL=mongodb://localhost:27017/ng-17-jwt-auth
 JWT_SECRET=fwrt43v63458m6356t8957438vn573480
 ```
+
+## Running app
+
+Before first start run `npm i` in `/` and `/api` directories.
+
+To start the server, run the `dev` script in `/api/package.json` and `start` in `/package.json`.
 
 ## Running unit tests
 
